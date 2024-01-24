@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ECommerceModule } from './e-commerce/e-commerce.module';
-import { BookingsModule } from './bookings/bookings.module';
-import { UsersModule } from './users/users.module';
-import { PopularTravelRoutesModule } from './popular-travel-routes/popular-travel-routes.module';
+import { ECommerceModule } from './app/e-commerce/e-commerce.module';
+import { BookingsModule } from './app/bookings/bookings.module';
+import { UsersModule } from './app/users/users.module';
+import { PopularTravelRoutesModule } from './app/popular-travel-routes/popular-travel-routes.module';
 
 @Module({
   imports: [
