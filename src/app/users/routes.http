@@ -1,0 +1,11 @@
+#SIGNUP ROUTE 
+POST http://localhost:8000/api/v1/users/signup
+content-type: application/json
+
+{
+  "email": "victorojong78090@gmail.com",
+  "password": "12345",
+  "username": "victor ojong moses"
+}
+
+
