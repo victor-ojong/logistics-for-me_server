@@ -1,0 +1,9 @@
+#Create new booking
+POST http://localhost:8000/api/v1/bookings/new
+Content-Type: application/json
+
+{
+"price": 40000,
+"email": "vict@gmail.com",
+"date": "12/02/2023"
+}
