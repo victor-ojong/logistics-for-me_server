@@ -1,4 +1,4 @@
-#SIGNUP ROUTE 
+#Creating a new user
 POST http://localhost:8000/api/v1/users/signup
 content-type: application/json
 
@@ -7,5 +7,6 @@ content-type: application/json
   "password": "12345",
   "username": "victor ojong moses"
 }
+
 
 
