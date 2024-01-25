@@ -1,5 +1,4 @@
 #Add new popular route
-
 POST http://localhost:8000/api/v1/popular-travel-routes/add
 content-type: application/json
 
