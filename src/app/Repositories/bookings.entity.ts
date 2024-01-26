@@ -1,39 +1,34 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Bookings {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ name: 'customerName', length: 180, nullable: true })
   customerName: string;
 
-  @Column()
+  @Column({ nullable: true })
   email: string;
 
-  @Column()
+  @Column({ name: 'price', nullable: true })
   price: number;
 
-  @Column()
+  @Column({ name: 'description', length: 180, nullable: true })
   description: string;
 
-  @Column()
+  @Column({ name: 'calculatedValue', nullable: true })
   calculatedValue: number;
 
-  @Column()
+  @Column({ name: 'phone', length: 180, nullable: true })
   phone: string;
 
-  @Column()
+  @Column({ name: 'pickUpAdress', length: 180, nullable: true })
   pickUpAdress: string;
 
-  @Column()
+  @Column({ name: ' dropOffAdress', length: 180, nullable: true })
   dropOffAdress: string;
 
-  @CreateDateColumn({ type: 'date' })
-  date: Date;
+  @Column({ name: ' date', length: 180, nullable: true })
+  date: string;
 }
