@@ -1,0 +1,9 @@
+#Add new popular route
+POST http://localhost:8000/api/v1/popular-travel-routes/add
+content-type: application/json
+
+{
+  "price": 6000,
+  "route": "Calabar - Abuja",
+  "description": "We Professionally handle logistics, ensuring a seamless transition to your new doorstep. Our adept management guarantees precision, while our friendly prices make the process hassle-free. Trust us to deliver a smooth moving experience tailored to your needs."
+}

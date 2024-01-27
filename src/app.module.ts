@@ -9,13 +9,14 @@ import { PopularTravelRoutesModule } from './app/popular-travel-routes/popular-t
 import { User } from './app/Repositories/users.entity';
 import { Bookings } from './app/Repositories/bookings.entity';
 import { Products } from './app/Repositories/products.entity';
+import { PopularRoutes } from './app/Repositories/popular-routes.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
-      entities: [User, Bookings, Products],
+      entities: [User, Bookings, Products, PopularRoutes],
       synchronize: true,
     }),
     ECommerceModule,
