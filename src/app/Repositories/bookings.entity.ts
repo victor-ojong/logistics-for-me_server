@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from './users.entity';
 
 @Entity()
 export class Bookings {
@@ -8,10 +9,10 @@ export class Bookings {
   @Column({ name: 'customerName', length: 180, nullable: true })
   customerName: string;
 
-  @Column({ nullable: true })
+  @Column()
   email: string;
 
-  @Column({ name: 'price', nullable: true })
+  @Column({ name: 'price' })
   price: number;
 
   @Column({ name: 'description', length: 180, nullable: true })
@@ -31,4 +32,7 @@ export class Bookings {
 
   @Column({ name: ' date', length: 180, nullable: true })
   date: string;
+
+  @ManyToMany(() => User, (user) => user.email, { cascade: true })
+  user: User[];
 }

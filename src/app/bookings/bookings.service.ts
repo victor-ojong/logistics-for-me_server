@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Bookings } from '../Repositories/bookings.entity';
-import { CreateBookingDto } from './dtos/create-bookings.dto';
 
 @Injectable()
 export class BookingsService {
@@ -11,8 +10,8 @@ export class BookingsService {
     private repo: Repository<Bookings>,
   ) {}
 
-  createBooking({ price, email, date }: CreateBookingDto) {
-    const item = this.repo.create({ price, email, date });
-    return this.repo.save(item);
+  createBooking(attrs: Partial<Bookings>) {
+    const bookings = this.repo.create(attrs);
+    return this.repo.save(bookings);
   }
 }

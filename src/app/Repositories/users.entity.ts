@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Bookings } from './bookings.entity';
 
 @Entity()
 export class User {
@@ -13,4 +20,8 @@ export class User {
 
   @Column()
   password: string;
+
+  @ManyToMany(() => Bookings, (bookings) => bookings.email, { cascade: true })
+  @JoinTable()
+  bookings: Bookings[];
 }
