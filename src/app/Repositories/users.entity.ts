@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Bookings } from './bookings.entity';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class User {
@@ -19,6 +20,7 @@ export class User {
   username: string;
 
   @Column()
+  @Exclude()
   password: string;
 
   @ManyToMany(() => Bookings, (bookings) => bookings.email, { cascade: true })
