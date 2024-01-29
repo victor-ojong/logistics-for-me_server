@@ -1,22 +1,43 @@
-import { Controller, Post, Body, Get, Param, Session } from '@nestjs/common';
-import { UsersService } from './users.service';
+import {
+  Controller,
+  Post,
+  Body,
+  Get,
+  Session,
+  UseInterceptors,
+} from '@nestjs/common';
 import { AuthService } from './authService';
 import { CreateUserDto } from './dtos/create-user.dto';
+import { CurrentUser } from './interceptors/users.interceptor';
+import { LoggedInUser } from './decorators/decorators.decorator';
+import { User } from '../Repositories/users.entity';
 
+@UseInterceptors(CurrentUser)
 @Controller('users')
 export class UsersController {
-  constructor(
-    private usersService: UsersService,
-    private authService: AuthService,
-  ) {}
+  constructor(private authService: AuthService) {}
 
   @Post('/signup')
-  signUp(@Body() body: CreateUserDto) {
-    return this.authService.signup(body.email, body.password, body.username);
+  async signUp(@Body() body: CreateUserDto, @Session() session: any) {
+    const user = await this.authService.signup(
+      body.email,
+      body.password,
+      body.username,
+    );
+    session.userId = user.id;
+
+    return user;
   }
 
   @Post('/login')
-  login(@Body() body: any) {
-    return body;
+  async login(@Body() body: any, @Session() session: any) {
+    const user = await this.authService.login(body.email, body.password);
+    session.userId = user.id;
+    return user;
+  }
+
+  @Get('/currentUser')
+  getCurrentUser(@LoggedInUser() user: User) {
+    return user;
   }
 }

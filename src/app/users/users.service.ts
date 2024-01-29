@@ -10,4 +10,9 @@ export class UsersService {
     const user = this.repo.create({ email, password, username });
     return this.repo.save(user);
   }
+
+  async findOne(id: number) {
+    const user = await this.repo.findOne({ where: { id } });
+    return user ? user : null;
+  }
 }
