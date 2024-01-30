@@ -20,6 +20,6 @@ export class CurrentUser implements NestInterceptor {
 
     user ? request.user : (request.user = {});
 
-    return next.handle().pipe();
+    return next.handle();
   }
 }

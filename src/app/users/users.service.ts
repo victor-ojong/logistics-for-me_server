@@ -15,4 +15,7 @@ export class UsersService {
     const user = await this.repo.findOne({ where: { id } });
     return user ? user : null;
   }
+  async findByEmail(email: string) {
+    return await this.repo.findOne({ where: { email } });
+  }
 }

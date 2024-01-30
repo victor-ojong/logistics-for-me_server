@@ -4,15 +4,15 @@ import {
   Body,
   Get,
   Session,
-  UseInterceptors,
+  // UseInterceptors,
 } from '@nestjs/common';
-import { AuthService } from './authService';
+import { AuthService } from './AuthService.1';
 import { CreateUserDto } from './dtos/create-user.dto';
-import { CurrentUser } from './interceptors/users.interceptor';
+// import { CurrentUser } from './interceptors/users.interceptor';
 import { LoggedInUser } from './decorators/decorators.decorator';
 import { User } from '../Repositories/users.entity';
 
-@UseInterceptors(CurrentUser)
+// @UseInterceptors(CurrentUser)
 @Controller('users')
 export class UsersController {
   constructor(private authService: AuthService) {}
