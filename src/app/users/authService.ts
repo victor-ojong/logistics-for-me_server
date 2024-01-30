@@ -23,23 +23,19 @@ export class AuthService {
   async login(email: string, password: string) {
     const user = await this.usersService.findByEmail(email);
 
-    // console.log(user);
-
     if (!user) {
-      return 'Invalid login credentials';
+      return { status: 'fail', message: 'Invalid login credentials', id: null };
     }
 
     const [salt, hashedDB] = user.password.split('.');
 
-    // const newHash = (await scrypt(password, salt, 32)) as Buffer;
+    const newHash = (await scrypt(password, salt, 32)) as Buffer;
 
-    // const isValid = hashedDB === newHash.toString('hex');
+    const isValid = hashedDB === newHash.toString('hex');
 
-    // console.log(newHash.toString('hex'), '888');
-
-    // if (!isValid) {
-    //   return 'Password login credentials';
-    // }
+    if (!isValid) {
+      return { status: 'fail', message: 'Invalid login credentials', id: null };
+    }
 
     return user;
   }

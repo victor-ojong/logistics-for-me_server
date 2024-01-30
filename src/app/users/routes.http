@@ -3,7 +3,7 @@ POST http://localhost:8000/api/v1/users/signup
 content-type: application/json
 
 {
-  "email": "victorojong708@gmail.com",
+  "email": "victorojong7@gmail.com",
   "password": "12345",
   "username": "victor ojong moses"
 }
@@ -19,3 +19,5 @@ content-type: application/json
 }
 
 
+###Get current user 
+GET http://localhost:8000/api/v1/users/currentUser
