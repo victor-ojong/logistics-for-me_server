@@ -3,14 +3,21 @@ POST http://localhost:8000/api/v1/users/signup
 content-type: application/json
 
 {
-  "email": "victorojong78090@gmail.com",
+  "email": "victorojong7@gmail.com",
   "password": "12345",
   "username": "victor ojong moses"
 }
 
 
-###Set color to session as cookie
-GET http://localhost:8000/api/v1/users/color
+### Login user 
+POST http://localhost:8000/api/v1/users/login
+content-type: application/json
+
+{
+  "email": "victorojong78@gmail.com",
+  "password": "12345"
+}
 
 
-
+###Get current user 
+GET http://localhost:8000/api/v1/users/currentUser
