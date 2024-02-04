@@ -23,7 +23,8 @@ export class UsersController {
     const user = await this.authService.signup(
       body.email,
       body.password,
-      body.username,
+      body.firstName,
+      body.lastName
     );
     session.userId = user.id;
     return user;
