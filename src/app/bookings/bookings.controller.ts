@@ -29,4 +29,9 @@ export class BookingsController {
   delete(@Param('id') id: string) {
     return this.bookingsService.delete(parseInt(id));
   }
+
+  @Get('/find/:findBy')
+  findAll(@Param('findBy') findBy: string) {
+    return findBy;
+  }
 }

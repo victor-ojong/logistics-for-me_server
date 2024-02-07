@@ -12,8 +12,7 @@ export class UsersService {
   }
 
   async findOne(id: number) {
-    const user = await this.repo.findOne({ where: { id } });
-    return user ? user : null;
+    return await this.repo.findOne({ where: { id } });
   }
   async findByEmail(email: string) {
     return await this.repo.findOne({ where: { email } });

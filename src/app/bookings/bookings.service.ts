@@ -19,7 +19,12 @@ export class BookingsService {
     return this.repo.find();
   }
 
-  delete(id: number) {
-    return this.repo.delete({ id });
+  async delete(id: number) {
+    const booking = await this.findOne(id);
+    return this.repo.remove(booking);
+  }
+
+  findOne(id: number) {
+    return this.repo.findOneBy({ id });
   }
 }
