@@ -4,6 +4,6 @@ export const LoggedInUser = createParamDecorator(
   (data: never, context: ExecutionContext) => {
     const request = context.switchToHttp().getRequest();
 
-    return request.user || {};
+    return request.user || null;
   },
 );

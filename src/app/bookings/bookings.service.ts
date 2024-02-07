@@ -14,4 +14,12 @@ export class BookingsService {
     const bookings = this.repo.create(attrs);
     return this.repo.save(bookings);
   }
+
+  getAllBookings() {
+    return this.repo.find();
+  }
+
+  delete(id: number) {
+    return this.repo.delete({ id });
+  }
 }
