@@ -5,7 +5,8 @@ content-type: application/json
 {
   "email": "victorojong7@gmail.com",
   "password": "12345",
-  "username": "victor ojong moses"
+  "firstName": "victor",
+  "lastName": "Ojong"
 }
 
 
@@ -20,4 +21,8 @@ content-type: application/json
 
 
 ###Get current user 
-GET http://localhost:8000/api/v1/users/currentUser
+GET http://localhost:8000/api/v1/users/currentUser   
+
+
+### Log user out of the application
+GET http://localhost:8000/api/v1/users/logout

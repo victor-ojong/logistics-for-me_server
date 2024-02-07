@@ -5,12 +5,14 @@ import {
   Get,
   Session,
   UseInterceptors,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { CurrentUser } from './interceptors/users.interceptor';
 import { LoggedInUser } from './decorators/decorators.decorator';
 import { User } from '../Repositories/users.entity';
 import { AuthService } from './authService';
+import { AuthGuard } from '../authguard/authguard.guard';
 
 @Controller('users')
 export class UsersController {
@@ -21,10 +23,10 @@ export class UsersController {
     const user = await this.authService.signup(
       body.email,
       body.password,
-      body.username,
+      body.firstName,
+      body.lastName
     );
     session.userId = user.id;
-
     return user;
   }
 
@@ -35,6 +37,12 @@ export class UsersController {
     return user;
   }
 
+  @Get('/logout')
+  logOut(@Session() session: any) {
+    session.userId = null;
+  }
+
+  @UseGuards(AuthGuard)
   @UseInterceptors(CurrentUser)
   @Get('/currentUser')
   getCurrentUser(@LoggedInUser() user: User) {

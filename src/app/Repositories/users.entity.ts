@@ -16,7 +16,10 @@ export class User {
   email: string;
 
   @Column()
-  username: string;
+  firstName: string;
+
+  @Column()
+  lastName: string;
 
   @Column()
   password: string;

@@ -10,14 +10,24 @@ import { User } from './app/Repositories/users.entity';
 import { Bookings } from './app/Repositories/bookings.entity';
 import { Products } from './app/Repositories/products.entity';
 import { PopularRoutes } from './app/Repositories/popular-routes.entity';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'db.sqlite',
-      entities: [User, Bookings, Products, PopularRoutes],
-      synchronize: true,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env',
+    }),
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => {
+        return {
+          type: 'sqlite',
+          database: config.get<'string'>('DB_NAME'),
+          entities: [User, Bookings, Products, PopularRoutes],
+          synchronize: true,
+        };
+      },
     }),
     ECommerceModule,
     BookingsModule,
