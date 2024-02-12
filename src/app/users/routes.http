@@ -3,7 +3,7 @@ POST http://localhost:8000/api/v1/users/signup
 content-type: application/json
 
 {
-  "email": "victorojong7@gmail.com",
+  "email": "victorojong78@gmail.com",
   "password": "12345",
   "firstName": "victor",
   "lastName": "Ojong"
@@ -15,7 +15,7 @@ POST http://localhost:8000/api/v1/users/login
 content-type: application/json
 
 {
-  "email": "victorojong7@gmail.com",
+  "email": "victorojong78@gmail.com",
   "password": "12345"
 }
 
