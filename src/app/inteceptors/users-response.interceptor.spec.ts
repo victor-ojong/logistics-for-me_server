@@ -1,4 +1,4 @@
-import { UserDto } from '../users/serializer-response-dtos/user.dto';
+import { UserDto } from '../serializer-response-dtos/user.dto';
 import { UsersResponseInterceptor } from './users-response.interceptor';
 let dto: UserDto;
 

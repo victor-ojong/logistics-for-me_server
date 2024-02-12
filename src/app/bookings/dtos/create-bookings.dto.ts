@@ -1,25 +1,19 @@
-import { IsEmail, IsNumber, IsString } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 export class CreateBookingDto {
-  @IsString()
-  customerName: string;
-
-  @IsEmail()
-  email: string;
-
   @IsString()
   description: string;
 
   @IsString()
-  pickUpAdress: string;
+  pickUpAddress: string;
 
   @IsString()
-  dropOffAdress: string;
+  dropOffAddress: string;
 
   @IsNumber()
   calculatedValue: number;
 
-  @IsString()
+  @IsNumber()
   price: number;
 
   @IsString()

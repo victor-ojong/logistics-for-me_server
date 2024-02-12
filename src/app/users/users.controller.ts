@@ -14,7 +14,7 @@ import { User } from '../Repositories/users.entity';
 import { AuthService } from './authService';
 import { AuthGuard } from '../authguard/authguard.guard';
 import { Serialize } from '../inteceptors/users-response.interceptor';
-import { UserDto } from './serializer-response-dtos/user.dto';
+import { UserDto } from '../serializer-response-dtos/user.dto';
 
 @Controller('users')
 @Serialize(UserDto)

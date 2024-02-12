@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Bookings } from '../Repositories/bookings.entity';
+import { User } from '../Repositories/users.entity';
 
 @Injectable()
 export class BookingsService {
@@ -10,8 +11,9 @@ export class BookingsService {
     private repo: Repository<Bookings>,
   ) {}
 
-  createBooking(attrs: Partial<Bookings>) {
+  createBooking(attrs: Partial<Bookings>, user: User) {
     const bookings = this.repo.create(attrs);
+    bookings.users = user;
     return this.repo.save(bookings);
   }
 
