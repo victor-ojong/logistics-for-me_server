@@ -33,6 +33,6 @@ export class Bookings {
   @Column({ name: ' date', length: 180, nullable: true })
   date: string;
 
-  @ManyToMany(() => User, (user) => user.email, { cascade: true })
-  user: User[];
+  @ManyToMany(() => User, (users) => users.bookings)
+  users: User[];
 }
