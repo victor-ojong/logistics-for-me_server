@@ -1,7 +1,7 @@
 import { promisify } from 'util';
 import { randomBytes, scrypt as _scrypt } from 'crypto';
 import { UsersService } from './users.service';
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 export const scrypt = promisify(_scrypt);
 
 @Injectable()
@@ -14,6 +14,11 @@ export class AuthService {
     firstName: string,
     lastName: string,
   ) {
+    const userExist = await this.usersService.findByEmail(email);
+
+    if (userExist) {
+      throw new HttpException('Email already in use', 403);
+    }
     const salt = randomBytes(8).toString('hex');
 
     const hash = (await scrypt(password, salt, 32)) as Buffer;
@@ -27,7 +32,7 @@ export class AuthService {
     const user = await this.usersService.findByEmail(email);
 
     if (!user) {
-      return { status: 'fail', message: 'Invalid login credentials', id: null };
+      throw new HttpException('Invalid login credentials', 403);
     }
 
     const [salt, hashedDB] = user.password.split('.');
@@ -37,7 +42,7 @@ export class AuthService {
     const isValid = hashedDB === newHash.toString('hex');
 
     if (!isValid) {
-      return { status: 'fail', message: 'Invalid login credentials', id: null };
+      throw new HttpException('Invalid login credentials', 403);
     }
 
     return user;
