@@ -3,7 +3,10 @@ POST http://localhost:8000/api/v1/bookings/new
 Content-Type: application/json
 
 {
-"price": 40000,
-"email": "vict@gmail.com",
+"price": 4000,
+"pickUpAddress": "Abuja",
+"dropOffAddress": "Calabar",
+"calculatedValue": 6700,
+"description": "Some kind of description",
 "date": "12/02/2023"
 }
