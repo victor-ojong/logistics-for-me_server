@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Bookings } from './bookings.entity';
+import { Products } from './products.entity';
 
 @Entity()
 export class User {
@@ -18,6 +19,6 @@ export class User {
   @Column()
   password: string;
 
-  @ManyToMany(() => Bookings, (bookings) => bookings.user, { cascade: true })
+  @ManyToMany(() => Bookings, (bookings) => bookings.users)
   bookings: Bookings[];
 }

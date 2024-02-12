@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './users.entity';
 
 @Entity()
@@ -33,6 +33,6 @@ export class Bookings {
   @Column({ name: ' date', length: 180, nullable: true })
   date: string;
 
-  @ManyToOne(() => User, (user) => user.bookings, { cascade: true })
-  user: User;
+  @ManyToMany(() => User, (users) => users.bookings)
+  users: User[];
 }
