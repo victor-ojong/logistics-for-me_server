@@ -18,17 +18,17 @@ export class Bookings {
   @Column({ name: 'description', length: 180, nullable: true })
   description: string;
 
-  @Column({ name: 'calculatedValue', nullable: true })
+  @Column({ name: 'calculated Value', nullable: true })
   calculatedValue: number;
 
   @Column({ name: 'phone', length: 180, nullable: true })
   phone: string;
 
-  @Column({ name: 'pickUpAdress', length: 180, nullable: true })
-  pickUpAdress: string;
+  @Column({ name: 'pick Up Address', length: 180, nullable: true })
+  pickUpAddress: string;
 
-  @Column({ name: ' dropOffAdress', length: 180, nullable: true })
-  dropOffAdress: string;
+  @Column({ name: ' drop Off Address', length: 180, nullable: true })
+  dropOffAddress: string;
 
   @Column({ name: ' date', length: 180, nullable: true })
   date: string;
