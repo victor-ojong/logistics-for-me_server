@@ -24,7 +24,7 @@ export class UsersController {
       body.email,
       body.password,
       body.firstName,
-      body.lastName
+      body.lastName,
     );
     session.userId = user.id;
     return user;
