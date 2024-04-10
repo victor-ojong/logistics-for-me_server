@@ -27,7 +27,7 @@ export class BookingsController {
     return this.bookingsService.createBooking(body, req.user);
   }
 
-  @Get('/all-bookings')
+  @Get()
   getAllBookings() {
     return this.bookingsService.getAllBookings();
   }
