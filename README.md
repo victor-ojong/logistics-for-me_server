@@ -5,7 +5,7 @@
 
 ## Description
 
-This API service powers the  business flow of thier logistics system.
+This API service powers the  business workforce of logistics for me platform.
 
 ## Installation
 
